@@ -34,13 +34,9 @@ const styles = {
   }
 }
 
-export let auth = {
-  authenticated: false
-}
-
 class login extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       email: '',
       password: '',
@@ -48,12 +44,10 @@ class login extends Component {
       errors: {}
     }
   }
-
+  
   handleSubmit = event => {
     event.preventDefault()
-    this.setState({
-      loading: true
-    })
+    this.setState({ loading: true })
     const userData = {
       email: this.state.email,
       password: this.state.password
@@ -61,17 +55,14 @@ class login extends Component {
     axios
       .post('', userData)
       .then(res => {
-        this.setState({
-          loading: false
-        })
         const FBidToken = `Bearer ${res.data.token}`
         localStorage.setItem('FBidToken', FBidToken)
         axios.defaults.headers.common['Authorization'] = FBidToken
-        auth.authenticated = true
+        this.setState({ loading: false })
+        this.props.login()
         history.push('/home')
       })
       .catch(err => {
-        auth.authenticated = false
         this.setState({
           errors: err.response.data,
           loading: false
@@ -109,6 +100,7 @@ class login extends Component {
                 onChange={this.handleChange}
                 variant="filled"
                 fullWidth
+                autoComplete={'username email'}
               />
               <TextField
                 id="password"
@@ -122,6 +114,7 @@ class login extends Component {
                 onChange={this.handleChange}
                 variant="filled"
                 fullWidth
+                autoComplete={'current-password'}
               />
               {errors.general && (
                 <Typography variant="body2" className={classes.customError}>

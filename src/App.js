@@ -1,5 +1,7 @@
-import login, { auth } from './pages/login'
+import Login from './pages/login'
+import history from './util/history'
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Router, Switch, Route } from 'react-router-dom'
 import './App.css'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
@@ -10,12 +12,12 @@ import listaDeAlunos from './pages/listaDeAlunos'
 import addAluno from './pages/addAluno'
 import aluno from './pages/aluno'
 import jwtDecode from 'jwt-decode'
-import dadosDesempenho from './pages/dadosDesempenho';
-import blockAluno from './pages/blockAluno';
-import history from './util/history'
+import dadosDesempenho from './pages/dadosDesempenho'
+import blockAluno from './pages/blockAluno'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://us-central1-personalclub-52112.cloudfunctions.net/api'
+axios.defaults.baseURL =
+  'https://us-central1-personalclub-52112.cloudfunctions.net/api'
 
 const theme = createMuiTheme({
   palette: {
@@ -23,7 +25,7 @@ const theme = createMuiTheme({
       light: '#eeeeee',
       main: '#333',
       dark: '#9e9e9e',
-      contrastText: '#fff',
+      contrastText: '#fff'
     },
     secondary: {
       light: '#800000',
@@ -40,63 +42,86 @@ const theme = createMuiTheme({
   }
 })
 
-const token = localStorage.FBidToken
-if (token) {
-  const decodedToken = jwtDecode(token)
-  if (decodedToken.exp * 1000 < Date.now()) {
-    localStorage.removeItem('FBidToken')
-    history.push('/')
-    auth.authenticated = false
-  } else {
-    auth.authenticated = true
-  }
-}
-
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      authenticated: false
+    }
+  }
+
+  handleLogin = () => {
+    this.setState({
+      authenticated: true
+    })
+  }
+
+  componentDidMount() {
+    const token = localStorage.FBidToken
+    if (token) {
+      const decodedToken = jwtDecode(token)
+      if (decodedToken.exp * 1000 < Date.now()) {
+        localStorage.removeItem('FBidToken')
+        this.setState({
+          authenticated: true
+        })
+        history.push('/')
+      } else {
+        this.setState({
+          authenticated: false
+        })
+      }
+    }
+  }
+
   render() {
+    const { authenticated } = this.state
     return (
       <MuiThemeProvider theme={theme}>
         <div className="App">
-          <Router  history={history}>
-            
+          <Router history={history}>
             <div className="container">
               <Switch>
-                <Route exact path="/" component={login} />
+                <Route
+                  exact
+                  path="/"
+                  render={props => <Login {...props} login={this.handleLogin} />}
+                />
                 <AuthRoute
                   exact
                   path="/home"
                   component={home}
-                  authenticated={auth.authenticated}
+                  authenticated={authenticated}
                 />
                 <AuthRoute
                   exact
                   path="/listaDeAlunos"
                   component={listaDeAlunos}
-                  authenticated={auth.authenticated}
+                  authenticated={authenticated}
                 />
                 <AuthRoute
                   exact
                   path="/aluno"
                   component={aluno}
-                  authenticated={auth.authenticated}
+                  authenticated={authenticated}
                 />
                 <AuthRoute
                   exact
                   path="/dadosDesempenho"
                   component={dadosDesempenho}
-                  authenticated={auth.authenticated}
+                  authenticated={authenticated}
                 />
                 <AuthRoute
                   exact
                   path="/blockAluno"
                   component={blockAluno}
-                  authenticated={auth.authenticated}
+                  authenticated={authenticated}
                 />
                 <AuthRoute
                   exact
                   path="/addAluno"
                   component={addAluno}
-                  authenticated={auth.authenticated}
+                  authenticated={authenticated}
                 />
               </Switch>
             </div>
@@ -105,6 +130,10 @@ class App extends Component {
       </MuiThemeProvider>
     )
   }
+}
+
+App.props = {
+  classes: PropTypes.object.isRequired
 }
 
 export default App
