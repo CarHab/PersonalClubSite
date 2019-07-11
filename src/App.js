@@ -13,6 +13,7 @@ import jwtDecode from 'jwt-decode'
 import dadosDesempenho from './pages/dadosDesempenho';
 import blockAluno from './pages/blockAluno';
 import history from './util/history'
+import axios from 'axios'
 
 axios.defaults.baseURL = 'https://us-central1-personalclub-52112.cloudfunctions.net/api'
 
