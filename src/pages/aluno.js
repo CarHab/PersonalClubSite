@@ -57,12 +57,12 @@ class aluno extends Component {
       }
     }
 
-    const email = {
-      email: history.location.state.user[5]
+    const id = {
+      id: history.location.state.user[8]
     }
 
     axios
-      .post('/aluno', email, config)
+      .post('/aluno', id, config)
       .then(res => {
         this.setState({
           nome: res.data.nome,
@@ -73,6 +73,7 @@ class aluno extends Component {
           email: res.data.email,
           telefone: res.data.telefone,
           pais: res.data.pais,
+          id: res.data.id,
           loading: false
         })
       })
@@ -120,6 +121,7 @@ class aluno extends Component {
     }
     const userData = {
       nome: this.state.nome,
+      id: this.state.id,
       matricula: this.state.matricula,
       sexo: this.state.sexo,
       cpf: this.state.cpf.replace(/\./g, '').replace('-', ''),
@@ -150,7 +152,7 @@ class aluno extends Component {
     history.push({
       pathname: '/dadosDesempenho',
       state: {
-        email: history.location.state.user[5],
+        id: history.location.state.user[8],
         nome: history.location.state.user[0]
       }
     })

@@ -74,6 +74,15 @@ const columns = [
       sort: true,
       display: false
     }
+  },
+  {
+    name: 'id',
+    label: 'id',
+    options: {
+      filter: true,
+      sort: true,
+      display: false
+    }
   }
 ]
 
@@ -148,6 +157,7 @@ class listaDeAlunos extends Component {
           res.data[aluno].sexo = res.data[aluno].sexo ? 'Masculino' : 'Feminino'
           data.push(res.data[aluno])
         }
+        console.log(data)
         this.setState({
           alunos: true,
           loading: false

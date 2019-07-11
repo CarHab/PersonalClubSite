@@ -56,19 +56,19 @@ class App extends Component {
     })
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const token = localStorage.FBidToken
     if (token) {
       const decodedToken = jwtDecode(token)
       if (decodedToken.exp * 1000 < Date.now()) {
         localStorage.removeItem('FBidToken')
         this.setState({
-          authenticated: true
+          authenticated: false
         })
         history.push('/')
       } else {
         this.setState({
-          authenticated: false
+          authenticated: true
         })
       }
     }

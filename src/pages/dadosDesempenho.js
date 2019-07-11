@@ -44,7 +44,7 @@ const styles = {
 class dadosDesempenho extends Component {
   componentDidMount() {
     this.setState({
-      email: history.location.state.email
+      id: history.location.state.id
     })
 
     const config = {
@@ -54,7 +54,7 @@ class dadosDesempenho extends Component {
     }
 
     const user = {
-      email: history.location.state.email
+      id: history.location.state.id
     }
 
     axios
