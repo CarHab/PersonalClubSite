@@ -14,6 +14,8 @@ import dadosDesempenho from './pages/dadosDesempenho';
 import blockAluno from './pages/blockAluno';
 import history from './util/history'
 
+axios.defaults.baseURL = 'https://us-central1-personalclub-52112.cloudfunctions.net/api'
+
 const theme = createMuiTheme({
   palette: {
     primary: {
