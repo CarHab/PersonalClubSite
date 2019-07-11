@@ -223,7 +223,6 @@ class blockAluno extends Component {
       download: false,
       viewColumns: false,
       onRowClick: event => {
-        console.log(event)
         this.setState({
           open: !this.state.open,
           selectedAluno:

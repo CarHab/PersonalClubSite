@@ -64,7 +64,6 @@ class aluno extends Component {
     axios
       .post('/aluno', email, config)
       .then(res => {
-        console.log(res.data)
         this.setState({
           nome: res.data.nome,
           matricula: res.data.matricula,

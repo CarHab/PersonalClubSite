@@ -236,7 +236,6 @@ class dadosDesempenho extends Component {
           loadingPost: false,
           snackOpen: true
         })
-        console.log(res.data)
       })
       .catch(err => {
         console.log(err)
