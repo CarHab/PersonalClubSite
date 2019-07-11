@@ -157,7 +157,6 @@ class listaDeAlunos extends Component {
           res.data[aluno].sexo = res.data[aluno].sexo ? 'Masculino' : 'Feminino'
           data.push(res.data[aluno])
         }
-        console.log(data)
         this.setState({
           alunos: true,
           loading: false
