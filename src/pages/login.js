@@ -85,7 +85,7 @@ class login extends Component {
           <Grid item sm />
           <Grid item sm>
             <Typography variant="h3" className={classes.title}>
-              Área assad
+              Área Administrativa
             </Typography>
             <form noValidate onSubmit={this.handleSubmit} autoComplete="off">
               <TextField
