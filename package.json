@@ -36,6 +36,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "https://us-central1-personalclub-52112.cloudfunctions.net/api"
+  }
 }
