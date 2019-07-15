@@ -56,7 +56,6 @@ class dadosDesempenho extends Component {
     const user = {
       id: history.location.state.id
     }
-
     axios
       .post('getDadosDesempenho', user, config)
       .then(res => {
@@ -188,7 +187,7 @@ class dadosDesempenho extends Component {
       }
     }
     const userData = {
-      email: this.state.email,
+      id: this.state.id,
       FC: this.state.FC,
       PA: this.state.PA,
       abdomen: this.state.abdomen,
