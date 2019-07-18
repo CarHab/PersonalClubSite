@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1f1322f3.chunk.css",
+    "main.js": "/static/js/main.24e7f2fe.chunk.js",
+    "main.js.map": "/static/js/main.24e7f2fe.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.909cfee5.chunk.js": "/static/js/2.909cfee5.chunk.js",
+    "static/js/2.909cfee5.chunk.js.map": "/static/js/2.909cfee5.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.968b659dff81acac532e726089e57f01.js": "/precache-manifest.968b659dff81acac532e726089e57f01.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.1f1322f3.chunk.css.map": "/static/css/main.1f1322f3.chunk.css.map",
+    "static/media/addAlunoIcone.png": "/static/media/addAlunoIcone.cbeb83bb.png",
+    "static/media/alunosIcone.png": "/static/media/alunosIcone.c91781c7.png",
+    "static/media/logo.png": "/static/media/logo.30885bdb.png"
+  }
+}
