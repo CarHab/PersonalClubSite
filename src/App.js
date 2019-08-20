@@ -16,7 +16,7 @@ import dadosDesempenho from './pages/dadosDesempenho'
 import blockAluno from './pages/blockAluno'
 import axios from 'axios'
 
-axios.defaults.baseURL = ''
+axios.defaults.baseURL = 'https://us-central1-personalclub-23861.cloudfunctions.net/api'
 
 const theme = createMuiTheme({
 	palette: {
